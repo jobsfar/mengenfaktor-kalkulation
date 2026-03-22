@@ -93,14 +93,17 @@
 
     </section>
 
-    <section class="card disclaimer-card">
-      <p class="disclaimer">
-        ⚠ <strong>Hinweis:</strong> Dieses Tool ist ein unabhängiges Beispielprojekt zu Lernzwecken.
-        Es besteht <em>keinerlei Verbindung</em> zu Rauch Landmaschinenfabrik GmbH oder anderen Herstellern.
-        Nutzung auf eigene Gefahr – für betriebliche Entscheidungen stets die offizielle Gerätedokumentation konsultieren.
-      </p>
-    </section>
   </main>
+
+  <!-- Disclaimer-Popup (einmalig, dauerhaft wegklickbar) -->
+  <div id="disclaimerPopup" class="disclaimer-popup" hidden>
+    <p>
+      <strong>⚠ Hinweis:</strong> Dieses Tool ist ein unabhängiges Beispielprojekt zu Lernzwecken.
+      Es besteht <em>keinerlei Verbindung</em> zu Rauch Landmaschinenfabrik GmbH oder anderen Herstellern.
+      Nutzung auf eigene Gefahr – für betriebliche Entscheidungen stets die offizielle Gerätedokumentation konsultieren.
+    </p>
+    <button id="disclaimerClose" class="btn-primary">Verstanden</button>
+  </div>
 
   <!-- Favorites Drawer -->
   <div id="favDrawer" class="drawer" role="dialog" aria-modal="true" aria-label="Favoriten" hidden>

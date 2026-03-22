@@ -7,9 +7,10 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 
 // localStorage-Schlüssel
-const STORAGE_KEY       = "mfcalc_favorites_v1";
-const STORAGE_AB_KEY    = "mfcalc_arbeitsbreite"; // gespeicherte Standard-Arbeitsbreite
-const STORAGE_THEME_KEY = "mfcalc_theme";
+const STORAGE_KEY        = "mfcalc_favorites_v1";
+const STORAGE_AB_KEY     = "mfcalc_arbeitsbreite"; // gespeicherte Standard-Arbeitsbreite
+const STORAGE_THEME_KEY  = "mfcalc_theme";
+const STORAGE_DISCLAIMER = "mfcalc_disclaimer_ok";
 
 const $ = (id) => document.getElementById(id);
 
@@ -308,6 +309,22 @@ function showToast(msg) {
   document.body.appendChild(t);
   setTimeout(() => t.remove(), 2100);
 }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// DISCLAIMER POPUP
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const disclaimerPopup = $("disclaimerPopup");
+const disclaimerClose = $("disclaimerClose");
+
+if (!localStorage.getItem(STORAGE_DISCLAIMER)) {
+  disclaimerPopup.hidden = false;
+}
+
+disclaimerClose.addEventListener("click", () => {
+  disclaimerPopup.hidden = true;
+  localStorage.setItem(STORAGE_DISCLAIMER, "1");
+});
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // INITIALISIERUNG

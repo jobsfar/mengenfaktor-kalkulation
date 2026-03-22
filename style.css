@@ -194,6 +194,21 @@ input[type="range"]::-moz-range-thumb {
   border: 3px solid var(--surface);
   box-shadow: 0 1px 6px rgba(0,0,0,.25);
 }
+
+/* Größerer Thumb und Track auf Touchgeräten */
+@media (pointer: coarse) {
+  input[type="range"] { height: 10px; }
+  input[type="range"]::-webkit-slider-thumb {
+    width: 34px;
+    height: 34px;
+    border-width: 4px;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 34px;
+    height: 34px;
+    border-width: 4px;
+  }
+}
 .range-ends {
   display: flex;
   justify-content: space-between;
@@ -486,6 +501,36 @@ input[type="range"]::-moz-range-thumb {
   color: var(--muted);
   text-align: center;
   padding: 1.5rem 0;
+}
+
+/* ── Disclaimer Popup ────────────────────────────────────────── */
+.disclaimer-popup {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(480px, calc(100vw - 2rem));
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 24px rgba(0,0,0,.18);
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  z-index: 150;
+  animation: slideUp .25s cubic-bezier(.22,1,.36,1);
+}
+.disclaimer-popup p {
+  font-size: .82rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.disclaimer-popup strong { color: var(--warn); }
+.disclaimer-popup .btn-primary { align-self: flex-end; }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 /* ── Toast ────────────────────────────────────────────────────── */
