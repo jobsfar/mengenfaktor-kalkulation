@@ -2,7 +2,7 @@
 
 ## Was ist das?
 
-Statische Web-App zur Berechnung des **Mengenfaktors** für Rauch MDS Zentrifugalstreuer mit Quatron Terminal. Kein Build-Schritt, keine Abhängigkeiten — reines HTML/CSS/JS.
+Statische Web-App zur Berechnung des **Mengenfaktors** für Rauch MDS Zentrifugalstreuer mit Quantron M Terminal. Kein Build-Schritt, keine Abhängigkeiten — reines HTML/CSS/JS.
 
 **Disclaimer:** Unabhängiges Beispielprojekt, keine Verbindung zu Rauch Landmaschinenfabrik GmbH.
 

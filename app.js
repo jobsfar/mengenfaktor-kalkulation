@@ -298,6 +298,17 @@ favBtn.addEventListener("click", openDrawerFn);
 closeDrawer.addEventListener("click", closeDrawerFn);
 overlay.addEventListener("click", closeDrawerFn);
 
+$("resetAllBtn").addEventListener("click", () => {
+  if (!confirm("Alle Favoriten und gespeicherten Einstellungen wirklich löschen?")) return;
+  localStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem(STORAGE_AB_KEY);
+  localStorage.removeItem(STORAGE_THEME_KEY);
+  localStorage.removeItem(STORAGE_DISCLAIMER);
+  renderFavorites([]);
+  updateDefaultAbDisplay();
+  showToast("Alle Daten gelöscht");
+});
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // TOAST-BENACHRICHTIGUNG
 // ═══════════════════════════════════════════════════════════════════════════════

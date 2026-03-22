@@ -1,6 +1,6 @@
 /* ================================================================
    MFcalc – Mengenfaktor Rechner
-   Rauch MDS · Quatron Terminal
+   Rauch MDS · Quantron M
    ================================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap');
@@ -419,6 +419,26 @@ input[type="range"]::-moz-range-thumb {
 }
 .btn-sm:hover { background: var(--accent-dk); }
 
+.drawer-danger-zone {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.btn-danger {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--danger);
+  border-radius: 7px;
+  padding: 8px 12px;
+  font-family: var(--sans);
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--danger);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.btn-danger:hover { background: var(--danger); color: #fff; }
+
 /* Save form */
 .save-form {
   display: flex;
@@ -504,6 +524,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* ── Disclaimer Popup ────────────────────────────────────────── */
+.disclaimer-popup[hidden] { display: none; }
 .disclaimer-popup {
   position: fixed;
   bottom: 1rem;
