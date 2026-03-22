@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#d4401a"/>
+  <!-- Hopper -->
+  <path d="M9 3 L23 3 L20 12 L12 12 Z" fill="white"/>
+  <!-- Frame bar -->
+  <rect x="11" y="12" width="10" height="2.5" rx="1" fill="white"/>
+  <!-- Left disc -->
+  <circle cx="10" cy="20" r="4.5" fill="white"/>
+  <line x1="10" y1="15.5" x2="10" y2="24.5" stroke="#d4401a" stroke-width="1.5"/>
+  <line x1="5.5" y1="20" x2="14.5" y2="20" stroke="#d4401a" stroke-width="1.5"/>
+  <!-- Right disc -->
+  <circle cx="22" cy="20" r="4.5" fill="white"/>
+  <line x1="22" y1="15.5" x2="22" y2="24.5" stroke="#d4401a" stroke-width="1.5"/>
+  <line x1="17.5" y1="20" x2="26.5" y2="20" stroke="#d4401a" stroke-width="1.5"/>
+  <!-- Spread particles -->
+  <circle cx="3" cy="28" r="1.5" fill="white"/>
+  <circle cx="6" cy="30" r="1" fill="white"/>
+  <circle cx="29" cy="28" r="1.5" fill="white"/>
+  <circle cx="26" cy="30" r="1" fill="white"/>
+</svg>

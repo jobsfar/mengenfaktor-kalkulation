@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mengenfaktor Rechner</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <script>
+    (function () {
+      const saved = localStorage.getItem("mfcalc_theme");
+      const dark = saved === "dark" || (!saved && matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.add(dark ? "dark" : "light");
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-brand">Rauch <em>MDS</em></span>
+        <span class="logo-sub">Mengenfaktor · Quatron</span>
+      </div>
+      <div class="header-actions">
+        <button id="darkBtn" class="icon-btn" title="Dark Mode" aria-label="Dark Mode umschalten">
+          <svg id="iconSun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" hidden><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg id="iconMoon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button id="favBtn" class="icon-btn" title="Favoriten" aria-label="Favoriten öffnen">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card" id="calcCard">
+
+      <div class="field">
+        <div class="field-header">
+          <label for="arbeitsbreite">Arbeitsbreite</label>
+          <span class="value-badge" id="arbeitsbreiteVal">15.0 m</span>
+        </div>
+        <input type="range" id="arbeitsbreite" min="10" max="24" step="0.5" value="15" />
+        <div class="range-ends"><span>10 m</span><span>24 m</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field-header">
+          <label for="ausbringmenge">Ausbringmenge</label>
+          <span class="value-badge" id="ausbringmengeVal">200 kg/ha</span>
+        </div>
+        <input type="range" id="ausbringmenge" min="50" max="600" step="5" value="200" />
+        <div class="range-ends"><span>50 kg/ha</span><span>600 kg/ha</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field-header">
+          <label for="fahrgeschwindigkeit">Fahrgeschwindigkeit</label>
+          <span class="value-badge" id="fahrgeschwindigkeitVal">10 km/h</span>
+        </div>
+        <input type="range" id="fahrgeschwindigkeit" min="4" max="15" step="0.1" value="10" />
+        <div class="range-ends"><span>4 km/h</span><span>15 km/h</span></div>
+      </div>
+
+      <div class="field">
+        <div class="field-header">
+          <label for="mengenkorrektur">Gewünschte Mengenkorrektur</label>
+          <span class="value-badge" id="mengenkorrekturVal">5 %</span>
+        </div>
+        <input type="range" id="mengenkorrektur" min="3" max="10" step="1" value="5" />
+        <div class="range-ends"><span>3 %</span><span>10 %</span></div>
+      </div>
+
+      <div class="result-box" id="resultBox">
+        <div class="result-row">
+          <span class="result-label">Massenstrom</span>
+          <span class="result-value" id="massenstromOut">— kg/min</span>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-main">
+          <span class="result-label">Mengenfaktor</span>
+          <span class="result-faktor" id="faktorOut">—</span>
+        </div>
+        <p class="result-hint" id="resultHint"></p>
+      </div>
+
+      <div class="inline-save-form">
+        <input type="text" id="favName" placeholder="Als Favorit speichern …" maxlength="40" />
+        <button class="btn-sm" id="confirmSave">Speichern</button>
+      </div>
+
+    </section>
+
+    <section class="card disclaimer-card">
+      <p class="disclaimer">
+        ⚠ <strong>Hinweis:</strong> Dieses Tool ist ein unabhängiges Beispielprojekt zu Lernzwecken.
+        Es besteht <em>keinerlei Verbindung</em> zu Rauch Landmaschinenfabrik GmbH oder anderen Herstellern.
+        Nutzung auf eigene Gefahr – für betriebliche Entscheidungen stets die offizielle Gerätedokumentation konsultieren.
+      </p>
+    </section>
+  </main>
+
+  <!-- Favorites Drawer -->
+  <div id="favDrawer" class="drawer" role="dialog" aria-modal="true" aria-label="Favoriten" hidden>
+    <div class="drawer-inner">
+      <div class="drawer-header">
+        <h2>Favoriten</h2>
+        <button id="closeDrawer" class="icon-btn" aria-label="Schließen">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="default-ab-box">
+        <span class="default-ab-label">Standard Arbeitsbreite</span>
+        <div class="default-ab-row">
+          <span class="default-ab-value" id="defaultAbDisplay">—</span>
+          <button class="btn-sm" id="setDefaultAbBtn">Aktuell speichern</button>
+        </div>
+      </div>
+
+      <ul id="favList" class="fav-list"></ul>
+      <p id="favEmpty" class="fav-empty">Noch keine Favoriten gespeichert.</p>
+    </div>
+  </div>
+  <div id="overlay" class="overlay" hidden></div>
+
+  <script src="calculator.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
