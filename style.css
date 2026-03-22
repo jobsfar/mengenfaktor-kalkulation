@@ -168,6 +168,7 @@ label {
 input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
+  touch-action: pan-y;
   height: 6px;
   border-radius: 3px;
   background: var(--border);
